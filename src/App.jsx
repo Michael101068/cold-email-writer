@@ -1,4 +1,79 @@
- import { useState, useEffect } from "react";
+</span>
+          ))}
+        </div>
+      </div>
+
+      {/* How it works */}
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "80px 40px" }}>
+        <div style={{ fontFamily: "'Courier New', monospace", fontSize: 10, letterSpacing: 3, color: "#aaa", marginBottom: 32 }}>HOW IT WORKS</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 2 }}>
+          {[
+            { n: "01", title: "Describe your target", body: "Tell us who you're reaching and what you want. Takes 30 seconds." },
+            { n: "02", title: "Pick a tone", body: "Direct, warm, bold, or curious — you choose how you show up." },
+            { n: "03", title: "Get 3 emails instantly", body: "An opener plus two follow-ups, ready to copy and send." },
+          ].map(step => (
+            <div key={step.n} style={{ background: "#ede8de", padding: "32px 28px", border: "1px solid #ddd5c0" }}>
+              <div style={{ fontFamily: "'Courier New', monospace", fontSize: 28, color: "#c48c3c", marginBottom: 16, lineHeight: 1 }}>{step.n}</div>
+              <h3 style={{ fontSize: 18, fontWeight: 400, margin: "0 0 10px" }}>{step.title}</h3>
+              <p style={{ color: "#7a6f5e", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ background: "#1a1610", color: "#e8e4dc", padding: "80px 40px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ fontFamily: "'Courier New', monospace", fontSize: 10, letterSpacing: 3, color: "#555", marginBottom: 40 }}>WHAT PEOPLE SAY</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 2 }}>
+            {[
+              { quote: "Booked 4 calls in my first week. The follow-ups alone are worth it.", name: "James R.", role: "Freelance consultant" },
+              { quote: "I used to spend 20 minutes per cold email. Now it's 20 seconds.", name: "Priya M.", role: "B2B SaaS founder" },
+              { quote: "The bold tone is genuinely different from anything I've seen from AI.", name: "Tom K.", role: "Sales lead" },
+            ].map(t => (
+              <div key={t.name} style={{ padding: "28px 24px", border: "1px solid #2a2520", background: "#201c18" }}>
+                <p style={{ fontSize: 15, lineHeight: 1.7, margin: "0 0 20px", fontStyle: "italic", color: "#c8c0b0" }}>"{t.quote}"</p>
+                <div style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: "#c48c3c" }}>{t.name}</div>
+                <div style={{ fontFamily: "'Courier New', monospace", fontSize: 10, color: "#555", marginTop: 2 }}>{t.role}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "80px 40px" }}>
+        <div style={{ fontFamily: "'Courier New', monospace", fontSize: 10, letterSpacing: 3, color: "#aaa", marginBottom: 40 }}>PRICING</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 2 }}>
+          {[
+            { plan: "Free", price: "$0", features: ["2 email sequences", "All 4 tones", "Copy to clipboard"], cta: "Start Free", highlight: false },
+            { plan: "Pro", price: "$9/mo", features: ["Unlimited sequences", "A/B subject variants", "Export to Gmail / CSV", "Priority support"], cta: "Upgrade to Pro", highlight: true },
+          ].map(p => (
+            <div key={p.plan} style={{ padding: "36px 32px", background: p.highlight ? "#1a1610" : "#ede8de", color: p.highlight ? "#e8e4dc" : "#1a1610", border: p.highlight ? "none" : "1px solid #ddd5c0" }}>
+              <div style={{ fontFamily: "'Courier New', monospace", fontSize: 10, letterSpacing: 3, color: p.highlight ? "#c48c3c" : "#aaa", marginBottom: 12 }}>{p.plan}</div>
+              <div style={{ fontSize: 40, fontWeight: 400, marginBottom: 24, letterSpacing: "-1px" }}>{p.price}</div>
+              <ul style={{ padding: 0, margin: "0 0 32px", listStyle: "none" }}>
+                {p.features.map(f => (
+                  <li key={f} style={{ fontFamily: "'Courier New', monospace", fontSize: 12, color: p.highlight ? "#888" : "#6b6050", lineHeight: 2.2 }}>✦ {f}</li>
+                ))}
+              </ul>
+              <button onClick={onCTA} style={{ width: "100%", background: p.highlight ? "#c48c3c" : "#1a1610", color: "#fff", border: "none", padding: "13px", fontSize: 11, fontFamily: "'Courier New', monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>{p.cta} →</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ background: "#c48c3c", padding: "60px 40px", textAlign: "center" }}>
+        <h2 style={{ fontSize: "clamp(24px,4vw,44px)", fontWeight: 400, margin: "0 0 20px", color: "#fff", letterSpacing: "-1px" }}>
+          Your next reply is 20 seconds away.
+        </h2>
+        <button onClick={onCTA} style={{ background: "#fff", color: "#c48c3c", border: "none", padding: "16px 36px", fontSize: 12, fontFamily: "'Courier New', monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>
+          TRY IT FREE →
+        </button>
+      </section>
+
+      <style>{`* { box-sizing: border-box; }`}</style>
+    </div>
+  );
+                             } import { useState, useEffect } from "react";
 
 const FREE_LIMIT = 2;
 const STORAGE_KEY = "cold_email_uses_v2";
