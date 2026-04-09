@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const FREE_LIMIT = 2;
 const STORAGE_KEY = "cev2";
+const CHECKOUT_URL = "https://outreachaiapp.lemonsqueezy.com/checkout/buy/cf335261-407d-4c82-b757-3cfac9bf47bc";
 
 function getUses() {
   try { return parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10); } catch { return 0; }
@@ -95,7 +96,7 @@ followUp2: 7 days later, different angle, more casual.`;
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "48px 24px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 48 }}>
           <span style={{ fontFamily: "monospace", fontSize: 11, letterSpacing: 3, color: "#555" }}>OUTREACHAI</span>
-          <button onClick={goLP} style={{ background: "transparent", border: "1px solid #222", color: "#555", padding: "6px 14px", fontSize: 11, fontFamily: "monospace", cursor: "pointer" }}>Landing Page →</button>
+          <button onClick={goLP} style={{ background: "transparent", border: "1px solid #222", color: "#555", padding: "6px 14px", fontSize: 11, fontFamily: "monospace", cursor: "pointer" }}>Landing Page</button>
         </div>
 
         <h1 style={{ fontSize: "clamp(28px,5vw,48px)", fontWeight: 400, lineHeight: 1.1, margin: "0 0 12px" }}>
@@ -125,7 +126,7 @@ followUp2: 7 days later, different angle, more casual.`;
           {error && <p style={{ margin: 0, color: "#c05050", fontFamily: "monospace", fontSize: 12 }}>⚠ {error}</p>}
 
           <button onClick={generate} disabled={loading} style={{ background: locked ? "#181818" : "#c48c3c", color: locked ? "#444" : "#0c0c0f", border: "none", padding: "15px", fontSize: 12, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: locked ? "not-allowed" : "pointer" }}>
-            {loading ? "WRITING..." : locked ? "🔒 UPGRADE TO CONTINUE" : "GENERATE EMAIL SEQUENCE →"}
+            {loading ? "WRITING..." : locked ? "UPGRADE TO CONTINUE" : "GENERATE EMAIL SEQUENCE"}
           </button>
         </div>
 
@@ -153,10 +154,10 @@ followUp2: 7 days later, different angle, more casual.`;
                 </div>
                 <div style={{ padding: "0 20px 16px", display: "flex", gap: 8 }}>
                   <button onClick={() => copy(`Subject: ${cur.subject}\n\n${cur.body}`, active)} style={{ background: "transparent", border: "1px solid #222", color: copied === active ? "#c48c3c" : "#666", padding: "6px 14px", fontSize: 10, fontFamily: "monospace", cursor: "pointer" }}>
-                    {copied === active ? "✓ COPIED" : "COPY"}
+                    {copied === active ? "COPIED" : "COPY"}
                   </button>
                   <button onClick={() => copy(tabs.map(t => `--- ${t.label} ---\nSubject: ${results[t.key].subject}\n\n${results[t.key].body}`).join("\n\n"), "all")} style={{ background: "transparent", border: "1px solid #222", color: copied === "all" ? "#c48c3c" : "#444", padding: "6px 14px", fontSize: 10, fontFamily: "monospace", cursor: "pointer" }}>
-                    {copied === "all" ? "✓ ALL COPIED" : "COPY ALL 3"}
+                    {copied === "all" ? "ALL COPIED" : "COPY ALL 3"}
                   </button>
                 </div>
               </>
@@ -172,7 +173,7 @@ followUp2: 7 days later, different angle, more casual.`;
             <ul style={{ color: "#666", fontFamily: "monospace", fontSize: 12, lineHeight: 2, margin: "0 0 24px", paddingLeft: 18 }}>
               <li>Unlimited sequences</li><li>All 4 tones</li><li>Copy all 3 emails</li>
             </ul>
-            <button style={{ width: "100%", background: "#c48c3c", color: "#0c0c0f", border: "none", padding: 14, fontSize: 12, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer", marginBottom: 8 }}>UPGRADE — $9/mo →</button>
+            <button onClick={() => window.open(CHECKOUT_URL)} style={{ width: "100%", background: "#c48c3c", color: "#0c0c0f", border: "none", padding: 14, fontSize: 12, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer", marginBottom: 8 }}>UPGRADE — $9/mo</button>
             <button onClick={() => setPaywall(false)} style={{ width: "100%", background: "transparent", border: "1px solid #1e1e1e", color: "#444", padding: 11, fontSize: 11, fontFamily: "monospace", cursor: "pointer" }}>MAYBE LATER</button>
           </div>
         </div>
@@ -198,14 +199,14 @@ function Landing({ go }) {
     <div style={{ minHeight: "100vh", background: "#f5f0e8", color: "#1a1610", fontFamily: "Georgia, serif" }}>
       <nav style={{ padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid #ddd5c0" }}>
         <span style={{ fontFamily: "monospace", fontSize: 12, letterSpacing: 3, color: "#888" }}>OUTREACHAI</span>
-        <button onClick={go} style={{ background: "#1a1610", color: "#f5f0e8", border: "none", padding: "10px 20px", fontSize: 12, fontFamily: "monospace", letterSpacing: 2, cursor: "pointer" }}>TRY FREE →</button>
+        <button onClick={go} style={{ background: "#1a1610", color: "#f5f0e8", border: "none", padding: "10px 20px", fontSize: 12, fontFamily: "monospace", letterSpacing: 2, cursor: "pointer" }}>TRY FREE</button>
       </nav>
 
       <section style={{ maxWidth: 860, margin: "0 auto", padding: "80px 40px 60px" }}>
         <div style={{ background: "#c48c3c", color: "#fff", fontSize: 10, fontFamily: "monospace", letterSpacing: 3, padding: "4px 12px", display: "inline-block", marginBottom: 24 }}>AI-POWERED COLD OUTREACH</div>
         <h1 style={{ fontSize: "clamp(36px,6vw,72px)", fontWeight: 400, lineHeight: 1.05, margin: "0 0 24px", letterSpacing: "-2px" }}>Stop writing cold<br />emails from scratch.</h1>
         <p style={{ fontSize: 17, lineHeight: 1.7, color: "#6b6050", maxWidth: 500, margin: "0 0 36px" }}>OutreachAI writes a full 3-email sequence in seconds. Personalized, sharp, and actually worth replying to.</p>
-        <button onClick={go} style={{ background: "#c48c3c", color: "#fff", border: "none", padding: "16px 32px", fontSize: 13, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>WRITE MY FIRST EMAIL →</button>
+        <button onClick={go} style={{ background: "#c48c3c", color: "#fff", border: "none", padding: "16px 32px", fontSize: 13, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>WRITE MY FIRST EMAIL</button>
         <span style={{ marginLeft: 20, fontFamily: "monospace", fontSize: 12, color: "#aaa" }}>2 free sequences. No card.</span>
       </section>
 
@@ -255,7 +256,7 @@ function Landing({ go }) {
               <ul style={{ padding: 0, margin: "0 0 28px", listStyle: "none" }}>
                 {feats.map(f => <li key={f} style={{ fontFamily: "monospace", fontSize: 11, color: hi ? "#888" : "#6b6050", lineHeight: 2.2 }}>✦ {f}</li>)}
               </ul>
-              <button onClick={go} style={{ width: "100%", background: hi ? "#c48c3c" : "#1a1610", color: "#fff", border: "none", padding: "12px", fontSize: 11, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>{cta} →</button>
+              <button onClick={hi ? () => window.open(CHECKOUT_URL) : go} style={{ width: "100%", background: hi ? "#c48c3c" : "#1a1610", color: "#fff", border: "none", padding: "12px", fontSize: 11, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>{cta}</button>
             </div>
           ))}
         </div>
@@ -263,9 +264,9 @@ function Landing({ go }) {
 
       <section style={{ background: "#c48c3c", padding: "56px 40px", textAlign: "center" }}>
         <h2 style={{ fontSize: "clamp(22px,4vw,40px)", fontWeight: 400, margin: "0 0 20px", color: "#fff" }}>Your next reply is 20 seconds away.</h2>
-        <button onClick={go} style={{ background: "#fff", color: "#c48c3c", border: "none", padding: "16px 32px", fontSize: 12, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>TRY IT FREE →</button>
+        <button onClick={go} style={{ background: "#fff", color: "#c48c3c", border: "none", padding: "16px 32px", fontSize: 12, fontFamily: "monospace", letterSpacing: 2, fontWeight: 700, cursor: "pointer" }}>TRY IT FREE</button>
       </section>
       <style>{`* { box-sizing: border-box; }`}</style>
     </div>
   );
-              }
+                                       }
